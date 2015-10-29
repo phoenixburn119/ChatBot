@@ -6,7 +6,8 @@ import java.util.ArrayList;
  * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
  * of the project.
  * @author Adam Kinzer
- * @version 1.2 10/14/15 Repaired the getUserName method and initialized the userName in the constructor.
+ * @version 1.3 10/28/15 Made a MemesList and built it. Also edited the reply system. along with adding .content. 
+ * Repaired the getContent method. Completed the contentChecker method.
  */
 public class Chatbot
 {
@@ -25,11 +26,24 @@ public class Chatbot
 		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
 		this.content = "CSGO";
+		this.content = "Shiloh Jr";
+		
+		buildMemesList();
+		buildPoliticalTopicsList();
 	}
 	
 	private void buildMemesList()
 	{
-		
+		this.memesList.add("cute animals");
+		this.memesList.add("Doge");
+		this.memesList.add("Thomas's Face");
+		this.memesList.add("Trevor's Face");
+		this.memesList.add("Pepe");
+		this.memesList.add("Weeknd pepe");
+		this.memesList.add("Shiloh Jr");
+		this.memesList.add("Shiloh lll");
+		this.memesList.add("Deez Nuts");
+		this.memesList.add("Illuminati");
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -63,7 +77,13 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		
+		if(currentInput.toLowerCase().contains(content.toLowerCase()))
+		{
+			hasContent = true;
+		}
+		return hasContent;
 	}
 	
 	/**
@@ -85,7 +105,13 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean hasMeme = false;
+		
+		if(currentInput.toLowerCase().contains(memesList.toLowerCase()))
+		{
+			hasMeme = true;
+		}
+		return hasMeme;
 	}
 	
 	/**
@@ -103,7 +129,7 @@ public class Chatbot
 	 */
 	public String getContent()
 	{
-		return null;
+		return content;
 	}
 	
 	/**
@@ -112,7 +138,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
