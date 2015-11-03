@@ -40,7 +40,6 @@ public class ChatController
 				
 			//}
 			textFromUser = display.getAnswer("What does " + textFromUser + " mean?");
-			display.displayResponse("So it means " + textFromUser + " ah ok cool!");
 		}
 	}
 }
