@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
  * of the project.
  * @author Adam Kinzer
- * @version 1.3 10/28/15 Made a MemesList and built it. Also edited the reply system. along with adding .content. 
+ * @version 1.4 10/28/15 Made a MemesList and built it. Also edited the reply system. along with adding .content. 
  * Repaired the getContent method. Completed the contentChecker method.
  */
 public class Chatbot
@@ -48,7 +48,7 @@ public class Chatbot
 	
 	private void buildPoliticalTopicsList()
 	{
-		
+		this.politicalTopicList.add("Trump");
 	}
 	
 	/**
@@ -94,7 +94,15 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean hasPolitical = false;
+		for(String politicalTopicList : politicalTopicList)
+		{
+			if(currentInput.toLowerCase().contains(politicalTopicList.toLowerCase()))
+			{
+				hasPolitical = true;
+			}
+		}
+		return hasPolitical;
 	}
 	
 	

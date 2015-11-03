@@ -31,14 +31,14 @@ public class ChatController
 			{
 				display.displayResponse("Wow, I had no idea you loved " + simpleBot.getContent());
 			}
-			else if(simpleBot.memeChecker(textFromUser))
+			if(simpleBot.memeChecker(textFromUser))
 			{
 				display.displayResponse("Dank meme son.");
 			}
-			//else if
-			//{
-				
-			//}
+			else if(simpleBot.politicalTopicChecker(textFromUser))
+			{
+				display.displayResponse("All that stuff makes no sense to me, I'm just a computer!");
+			}
 			textFromUser = display.getAnswer("What does " + textFromUser + " mean?");
 		}
 	}
