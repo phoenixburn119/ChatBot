@@ -1,9 +1,20 @@
 package chat.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
 public class ChatView
 {
+	
+	private String windowMessage;
+	private ImageIcon chatIcon;
+	
+	public ChatView()
+	{
+		windowMessage = "Thisi message brought to you by Chatbot.";
+		chatIcon = new ImageIcon(getClass().getResource("images/SpookyScarySkelly.png"));
+		
+	}
 	/**
 	 * Displays a GUI popup for collecting user text with a supplied String.
 	 * Usually in the form of a question for further use in the program.
