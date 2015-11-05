@@ -7,12 +7,18 @@ public class ChatView
 {
 	
 	private String windowMessage;
-	private ImageIcon chatIcon;
+	private ImageIcon SpookyIcon;
+	private ImageIcon blackIcon;
+	private ImageIcon eveeIcon;
+	private ImageIcon umbereonIcon;
 	
 	public ChatView()
 	{
 		windowMessage = "Hello I'm Chatbot.";
-		chatIcon = new ImageIcon(getClass().getResource("images/SpookyScarySkelly.png"));
+		SpookyIcon = new ImageIcon(getClass().getResource("images/SpookyScarySkelly.png"));
+		blackIcon = new ImageIcon(getClass().getResource("images/black.png"));
+		eveeIcon = new ImageIcon(getClass().getResource("images/EveeEvo.png"));
+		umbereonIcon = new ImageIcon(getClass().getResource("images/Umberion.png"));
 		
 	}
 	/**
@@ -24,7 +30,7 @@ public class ChatView
 	public String getAnswer(String displayMessage)
 	{
 		String answer = "";
-		answer = JOptionPane.showInputDialog(null, displayMessage, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "Type here please.").toString();
+		answer = JOptionPane.showInputDialog(null, displayMessage, windowMessage, JOptionPane.INFORMATION_MESSAGE, RandomIcon(), null, "Type here please.").toString();
 		return answer;
 	}
 	
@@ -34,6 +40,25 @@ public class ChatView
 	 */
 	public void displayResponse(String displayMessage)
 	{
-		JOptionPane.showMessageDialog(null, displayMessage, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
+		JOptionPane.showMessageDialog(null, displayMessage, windowMessage, JOptionPane.PLAIN_MESSAGE, RandomIcon());
+	}
+	
+	private ImageIcon RandomIcon()
+	{
+		int randomIcon = (int) (Math.random() * 5);
+		
+		switch (randomIcon)
+		{
+		case 0:
+			return SpookyIcon;
+		case 1:
+			return blackIcon;
+		case 2:
+			return eveeIcon;
+		case 3:
+			return umbereonIcon;
+		default:
+			return SpookyIcon;
+		}
 	}
 }
