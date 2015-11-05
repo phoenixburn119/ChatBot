@@ -11,6 +11,7 @@ public class ChatView
 	private ImageIcon blackIcon;
 	private ImageIcon eveeIcon;
 	private ImageIcon umbereonIcon;
+	private ImageIcon smileIcon;
 	
 	public ChatView()
 	{
@@ -19,7 +20,7 @@ public class ChatView
 		blackIcon = new ImageIcon(getClass().getResource("images/black.png"));
 		eveeIcon = new ImageIcon(getClass().getResource("images/EveeEvo.png"));
 		umbereonIcon = new ImageIcon(getClass().getResource("images/Umberion.png"));
-		
+		smileIcon = new ImageIcon(getClass().getResource("images/Smile.png"));
 	}
 	/**
 	 * Displays a GUI popup for collecting user text with a supplied String.
@@ -57,6 +58,8 @@ public class ChatView
 			return eveeIcon;
 		case 3:
 			return umbereonIcon;
+		case 4:
+			return smileIcon;
 		default:
 			return SpookyIcon;
 		}
