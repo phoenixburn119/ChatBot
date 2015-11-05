@@ -1,9 +1,20 @@
 package chat.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
 public class ChatView
 {
+	
+	private String windowMessage;
+	private ImageIcon chatIcon;
+	
+	public ChatView()
+	{
+		windowMessage = "Hello I'm Chatbot.";
+		chatIcon = new ImageIcon(getClass().getResource("images/SpookyScarySkelly.png"));
+		
+	}
 	/**
 	 * Displays a GUI popup for collecting user text with a supplied String.
 	 * Usually in the form of a question for further use in the program.
@@ -13,7 +24,7 @@ public class ChatView
 	public String getAnswer(String displayMessage)
 	{
 		String answer = "";
-		answer = JOptionPane.showInputDialog(null, displayMessage);
+		answer = JOptionPane.showInputDialog(null, displayMessage, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "Type here please.").toString();
 		return answer;
 	}
 	
@@ -23,6 +34,6 @@ public class ChatView
 	 */
 	public void displayResponse(String displayMessage)
 	{
-		JOptionPane.showMessageDialog(null, displayMessage);
+		JOptionPane.showMessageDialog(null, displayMessage, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
 	}
 }
