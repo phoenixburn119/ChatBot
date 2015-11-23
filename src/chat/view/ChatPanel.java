@@ -37,7 +37,6 @@ public class ChatPanel extends JPanel
 	
 	private void setupLayout()
 	{
-		submitButton.setBackground(Color.WHITE);
 		setBackground(Color.DARK_GRAY);
 		inputField.setBackground(Color.LIGHT_GRAY);
 		baseLayout.putConstraint(SpringLayout.SOUTH, submitButton, -10, SpringLayout.SOUTH, this);
