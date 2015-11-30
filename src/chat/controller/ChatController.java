@@ -9,7 +9,7 @@ public class ChatController
 	private Chatbot simpleBot;
 	private ChatView display;
 	private ChatFrame baseFrame;
-	
+
 	public ChatController()
 	{
 		display = new ChatView();
@@ -43,5 +43,22 @@ public class ChatController
 			}
 			textFromUser = display.getAnswer("What does " + textFromUser + " mean?");
 		}
+	}
+	
+	public 
+	
+	public Chatbot getChatbot()
+	{
+		return simpleBot;
+	}
+	
+	public ChatView getChatView()
+	{
+		return display;
+	}
+	
+	public ChatFrame getBaseFrame()
+	{
+		return baseFrame;
 	}
 }

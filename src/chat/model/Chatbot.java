@@ -13,6 +13,7 @@ public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
+	private ArrayLIst<String> keyboardMashChecker;
 	private String userName;
 	private String content;
 	
@@ -24,10 +25,12 @@ public class Chatbot
 	{
 		this.memesList = new ArrayList<String>();
 		this.politicalTopicList = new ArrayList<String>();
+		this.keyboardMashChecker = new ArrayList<String>();
 		this.userName = userName;
 		this.content = "CSGO";
 		this.content = "Shiloh Jr";
 		
+		buildKeyboardMashChecker();
 		buildMemesList();
 		buildPoliticalTopicsList();
 	}
@@ -64,6 +67,10 @@ public class Chatbot
 		this.politicalTopicList.add("11/8/2016");
 	}
 	
+	private void keyboardMashChecker()
+	{
+		this.keyboardMashChecker.add("S.D.F.");
+	}
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
 	 * otherwise returns true. 

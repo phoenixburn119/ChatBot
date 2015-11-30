@@ -19,8 +19,8 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		submitButton = new JButton("Submit");
-		inputField = new JTextField("Answer me please!");
-		outputField = new JTextArea("******");
+		inputField = new JTextField();
+		outputField = new JTextArea("*******");
 
 		setupPanel();
 		setupLayout();
@@ -33,6 +33,8 @@ public class ChatPanel extends JPanel
 		this.add(submitButton);
 		this.add(inputField);
 		this.add(outputField);
+		inputField.setToolTipText("Type here for the chatbot");
+		outputField.setEnabled(false);
 	}
 	
 	private void setupLayout()
@@ -54,5 +56,10 @@ public class ChatPanel extends JPanel
 	private void setupListeners()
 	{
 		
+	}
+	
+	public JTextField getTextField()
+	{
+		return inputField;
 	}
 }
