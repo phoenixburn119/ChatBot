@@ -45,8 +45,6 @@ public class ChatController
 		}
 	}
 	
-	public 
-	
 	public Chatbot getChatbot()
 	{
 		return simpleBot;

@@ -13,7 +13,7 @@ public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
-	private ArrayLIst<String> keyboardMashChecker;
+	private ArrayList<String> keyboardMashChecker;
 	private String userName;
 	private String content;
 	
@@ -30,9 +30,9 @@ public class Chatbot
 		this.content = "CSGO";
 		this.content = "Shiloh Jr";
 		
-		buildKeyboardMashChecker();
 		buildMemesList();
 		buildPoliticalTopicsList();
+		buildKeyboardMashChecker();
 	}
 	
 	private void buildMemesList()
@@ -67,9 +67,12 @@ public class Chatbot
 		this.politicalTopicList.add("11/8/2016");
 	}
 	
-	private void keyboardMashChecker()
+	private void buildKeyboardMashChecker()
 	{
-		this.keyboardMashChecker.add("S.D.F.");
+		this.keyboardMashChecker.add("sdf");
+		this.keyboardMashChecker.add("dgf");
+		this.keyboardMashChecker.add("cvb");
+		this.keyboardMashChecker.add(",./");
 	}
 	/**
 	 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
@@ -237,5 +240,16 @@ public class Chatbot
 	public void setContent(String content)
 	{
 		
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean ismash = false;
+		for each()
+		{
+			
+		}
+		
+		return ismash;
 	}
 }
