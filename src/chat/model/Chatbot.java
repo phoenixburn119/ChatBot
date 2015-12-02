@@ -38,7 +38,7 @@ public class Chatbot
 	private void buildMemesList()
 	{
 		this.memesList.add("cute animals");
-		this.memesList.add("Doge");
+		this.memesList.add("doge");
 		this.memesList.add("Thomas's Face");
 		this.memesList.add("Trevor's Face");
 		this.memesList.add("Pepe");
@@ -64,13 +64,13 @@ public class Chatbot
 		this.politicalTopicList.add("Fiorina");
 		this.politicalTopicList.add("Sanders");
 		this.politicalTopicList.add("Vote");
-		this.politicalTopicList.add("11/8/2016");
+		this.politicalTopicList.add("11/4/16");
 	}
 	
 	private void buildKeyboardMashChecker()
 	{
 		this.keyboardMashChecker.add("sdf");
-		this.keyboardMashChecker.add("dgf");
+		this.keyboardMashChecker.add("dfg");
 		this.keyboardMashChecker.add("cvb");
 		this.keyboardMashChecker.add(",./");
 	}
@@ -149,7 +149,12 @@ public class Chatbot
 	
 	public boolean quitChecker(String currentInput)
 	{
-		return false;
+		boolean hasQuit = false;
+		if(currentInput.toLowerCase().equals("quit"))
+		{
+			hasQuit = true;
+		}
+		return hasQuit;
 	}
 	
 	public String processConversation(String currentInput)
@@ -157,6 +162,10 @@ public class Chatbot
 		String nextConversation = "oh, what else would you like to talk about?";
 		int randomTopic = (int) (Math.random() * 5); //Generates a random number between 0 and 4.
 		
+		if(keyboardMashChecker(currentInput))
+		{
+			return "Stop mashing the keyboard good sir.";
+		}
 		switch (randomTopic)
 		{
 		case 0:
@@ -244,7 +253,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	/**
@@ -253,6 +262,6 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 }
