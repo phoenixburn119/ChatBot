@@ -197,6 +197,20 @@ public class Chatbot
 		return nextConversation;
 	}
 	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean ismash = false;
+		for(String s : keyboardMashChecker)
+		{
+			if(s.equals(currentInput))
+			{
+				ismash = true;
+			}
+		}
+		
+		return ismash;
+	}
+	
 	/**
 	 * Returns the username of this Chatbot instance.
 	 * @return The username of the Chatbot.
@@ -240,16 +254,5 @@ public class Chatbot
 	public void setContent(String content)
 	{
 		
-	}
-	
-	public boolean keyboardMashChecker(String currentInput)
-	{
-		boolean ismash = false;
-		for each()
-		{
-			
-		}
-		
-		return ismash;
 	}
 }

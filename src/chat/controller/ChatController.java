@@ -21,28 +21,26 @@ public class ChatController
 	public void start()
 	{
 		display.displayResponse("Hello " + simpleBot.getUserName() + " I'm ChatBot!");
-		chat();
+		//chat();
 	}
 	
 	private void chat()
 	{
-		String textFromUser = display.getAnswer("What would you like to talk about today?");
-		while(simpleBot.lengthChecker(textFromUser))
+		String conversation = display.getAnswer("What would you like to talke about today?");
+		while(simpleBot.lengthChecker(conversation))
 		{
-			if(simpleBot.contentChecker(textFromUser))
-			{
-				display.displayResponse("Wow, I had no idea you loved " + simpleBot.getContent());
-			}
-			if(simpleBot.memeChecker(textFromUser))
-			{
-				display.displayResponse("Dank meme son.");
-			}
-			else if(simpleBot.politicalTopicChecker(textFromUser))
-			{
-				display.displayResponse("All that stuff makes no sense to me, I'm just a computer!");
-			}
-			textFromUser = display.getAnswer("What does " + textFromUser + " mean?");
+			conversation = simpleBot.processConversation(conversation);
+			conversation = display.getAnswer(conversation);
 		}
+	}
+	
+	public String fromUserToChatbot(String conversation)
+	{
+		String botResponse = "";
+		
+		botResponse = simpleBot.processConversation(conversation);
+		
+		return botResponse;
 	}
 	
 	public Chatbot getChatbot()
