@@ -34,9 +34,20 @@ public class ChatController
 		}
 	}
 	
+	private void shutDown()
+	{
+		display.displayResponse("Goodbye, " + simpleBot.getUserName() + " it has been a pleasure talking with you.");
+		System.exit(0);
+	}
+	
 	public String fromUserToChatbot(String conversation)
 	{
 		String botResponse = "";
+		
+		if(simpleBot.quitChecker(conversation))
+		{
+			shutDown();
+		}
 		
 		botResponse = simpleBot.processConversation(conversation);
 		
