@@ -31,6 +31,9 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}
 	
+	/*
+	 * Adds components onto the panel
+	 */
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
@@ -42,6 +45,9 @@ public class ChatPanel extends JPanel
 		outputField.setEnabled(false);
 	}
 	
+	/*
+	 * Stores the layout code for all the panel components. 
+	 */
 	private void setupLayout()
 	{
 		titleLabel.setForeground(Color.WHITE);
@@ -62,6 +68,9 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, outputField, 0, SpringLayout.EAST, submitButton);
 	}
 	
+	/*
+	 * Is a listener that grabs user text, displays answer, and clears input field.
+	 */
 	private void setupListeners()
 	{
 		submitButton.addActionListener(new ActionListener()
