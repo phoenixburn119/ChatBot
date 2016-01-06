@@ -13,6 +13,9 @@ public class ChatView
 	private ImageIcon umbereonIcon;
 	private ImageIcon smileIcon;
 	
+	/*
+	* Is the constructor that builds the objects.
+	*/
 	public ChatView()
 	{
 		windowMessage = "Hello I'm Chatbot.";

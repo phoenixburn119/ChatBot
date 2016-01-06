@@ -18,6 +18,9 @@ public class ChatController
 		baseFrame = new ChatFrame(this);
 	}
 	
+	/*
+	 * Starts the program to collect your username.
+	 */
 	public void start()
 	{
 		display.displayResponse("Hello " + simpleBot.getUserName() + " I'm ChatBot!");
@@ -34,6 +37,9 @@ public class ChatController
 		}
 	}
 	
+	/*
+	 * This method is used to see if the user types in a phrase and shuts the program down.
+	 */
 	private void shutDown()
 	{
 		display.displayResponse("Goodbye, " + simpleBot.getUserName() + " it has been a pleasure talking with you.");
