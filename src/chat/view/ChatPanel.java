@@ -1,11 +1,19 @@
 package chat.view;
 
-import javax.swing.*;
-import java.awt.event.*;
-import chat.controller.ChatController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
+import chat.controller.ChatController;
 
 public class ChatPanel extends JPanel
 {
@@ -77,17 +85,41 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String userText = inputField.getText();		//Grab user text		X
-				String response = baseController.fromUserToChatbot(userText);	//send the text to the controller	X	//give text to chatbot to process	X
-				outputField.append("\nUser: " + userText);		//display users text	X
-				outputField.append("\nChatbot: " + response);	//display answers	X
-				inputField.setText("");		//clear user field		X
+				submitted();
 			}
 		});
+		
+		inputField.addKeyListener(new KeyListener()
+		{
+			public void keyTyped(KeyEvent typed)
+			{
+				
+			}
+			public void keyPressed(KeyEvent pressed)
+			{
+				if(pressed.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					submitted();
+				}
+			}
+			public void keyReleased(KeyEvent released)
+			{
+				
+			}
+		});
+	}
+	private void submitted()
+	{
+		String userText = inputField.getText();		//Grab user text		X
+		String response = baseController.fromUserToChatbot(userText);	//send the text to the controller	X	//give text to chatbot to process	X
+		outputField.append("\nUser: " + userText);		//display users text	X
+		outputField.append("\nChatbot: " + response);	//display answers	X
+		inputField.setText("");		//clear user field		X
 	}
 	
 	public JTextField getTextField()
 	{
 		return inputField;
 	}
+	
 }

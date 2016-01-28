@@ -14,6 +14,7 @@ public class Chatbot
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashChecker;
+	private String [] quitList;
 	private String userName;
 	private String content;
 	
@@ -26,6 +27,7 @@ public class Chatbot
 		this.memesList = new ArrayList<String>();
 		this.politicalTopicList = new ArrayList<String>();
 		this.keyboardMashChecker = new ArrayList<String>();
+		this.quitList = new String [6];
 		this.userName = userName;
 		this.content = "CSGO";
 		this.content = "Shiloh Jr";
@@ -33,6 +35,7 @@ public class Chatbot
 		buildMemesList();
 		buildPoliticalTopicsList();
 		buildKeyboardMashChecker();
+		quitList();
 	}
 	
 	private void buildMemesList()
@@ -150,11 +153,29 @@ public class Chatbot
 	public boolean quitChecker(String currentInput)
 	{
 		boolean hasQuit = false;
-		if(currentInput.toLowerCase().equals("quit"))
+		for(int pos = 0; pos < quitList.length; pos++)
 		{
-			hasQuit = true;
+			if(quitList[pos].equals(currentInput))
+			{
+				hasQuit = true;
+			}
 		}
+		
+//		if(currentInput.toLowerCase())
+//		{
+//			hasQuit = true;
+//		}
 		return hasQuit;
+	}
+	
+	private void quitList()
+	{
+		this.quitList[0] = "quit";
+		this.quitList[1] = "exit";
+		this.quitList[2] = "end";
+		this.quitList[3] = "leave";
+		this.quitList[4] = "close";
+		this.quitList[5] = "bye";
 	}
 	
 	public String processConversation(String currentInput)
