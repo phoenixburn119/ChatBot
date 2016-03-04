@@ -29,7 +29,10 @@ public class ChatSocialPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		
+		this.setLayout(baseLayout);
+		this.add(titleBar);
+		this.add(faceBookButton);
+		this.add(twitterButton);
 	}
 	
 	private void setupLayout()

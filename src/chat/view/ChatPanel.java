@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +33,7 @@ public class ChatPanel extends JPanel
 		baseLayout = new SpringLayout();
 		submitButton = new JButton("Submit");
 		inputField = new JTextField();
+		outputField = new JTextArea();
 		titleLabel = new JLabel("Hello i' Chatbot! Talk to me.");
 		baseLayout.putConstraint(SpringLayout.SOUTH, titleLabel, -339, SpringLayout.NORTH, inputField);
 
@@ -66,14 +66,9 @@ public class ChatPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.add(submitButton);
 		this.add(inputField);
-		//this.add(outputField);
+		//this.add(outputField); //No longer adding outputField since textPane is the outputfield now.
 		this.add(textPane);
-		outputField = new JTextArea();
-		baseLayout.putConstraint(SpringLayout.NORTH, outputField, 6, SpringLayout.SOUTH, titleLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, outputField, 0, SpringLayout.WEST, inputField);
-		baseLayout.putConstraint(SpringLayout.SOUTH, outputField, -197, SpringLayout.NORTH, submitButton);
-		baseLayout.putConstraint(SpringLayout.EAST, outputField, -267, SpringLayout.EAST, submitButton);
-		add(outputField);
+		//add(outputField);
 		outputField.setEnabled(false);
 		this.add(titleLabel);
 		inputField.setToolTipText("Type here for the chatbot");
@@ -84,6 +79,11 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
+		baseLayout.putConstraint(SpringLayout.NORTH, outputField, 6, SpringLayout.SOUTH, titleLabel);
+		baseLayout.putConstraint(SpringLayout.WEST, outputField, 0, SpringLayout.WEST, inputField);
+		baseLayout.putConstraint(SpringLayout.SOUTH, outputField, -197, SpringLayout.NORTH, submitButton);
+		baseLayout.putConstraint(SpringLayout.EAST, outputField, -267, SpringLayout.EAST, submitButton);
+		outputField.setForeground(Color.BLACK);
 		titleLabel.setForeground(Color.WHITE);
 		baseLayout.putConstraint(SpringLayout.WEST, titleLabel, 0, SpringLayout.WEST, inputField);
 		baseLayout.putConstraint(SpringLayout.EAST, titleLabel, 0, SpringLayout.EAST, submitButton);
@@ -129,6 +129,7 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
+	
 	private void submitted()
 	{
 		String userText = inputField.getText();		//Grab user text		X
