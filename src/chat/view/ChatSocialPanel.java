@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import chat.controller.ChatController;
+import chat.view.ChatPanel;
 
 public class ChatSocialPanel extends JPanel
 {
@@ -37,7 +38,7 @@ public class ChatSocialPanel extends JPanel
 	
 	private void setupLayout()
 	{
-		
+
 	}
 	
 	private void setupListeners()

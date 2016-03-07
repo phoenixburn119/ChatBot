@@ -11,7 +11,7 @@ public class CTECTwitter
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
 	
-	public CTECTwitter()
+	public CTECTwitter(ChatController baseController)
 	{
 		this.statusList = new ArrayList<Status>();
 		this.wordsList = new ArrayList<String>();
@@ -21,7 +21,15 @@ public class CTECTwitter
 	
 	public void sendTweet(String message)
 	{
-		CTECTwitter.updateStatus("I just tweeted from my Java Chatbot program! #APCSRocks @CTECNow Thanks @cscheerleader & @codyhenrichsen!");
+		try
+		{
+			CTECTwitter.updateStatus("IT'S YA BOY ADAM @AdamGKinzer");
+			//if boolean method set variable to true here.
+		}
+		catch(TwitterException error)
+		{
+			baseController.handleErrors(error.getErrorMessage());
+		}
 	}
 	
 }
