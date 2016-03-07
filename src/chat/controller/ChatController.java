@@ -1,6 +1,7 @@
 package chat.controller;
 
 import chat.model.Chatbot;
+import chat.modelCTECTwitter;
 import chat.view.ChatView;
 import chat.view.ChatFrame;
 
@@ -9,6 +10,7 @@ public class ChatController
 	private Chatbot simpleBot;
 	private ChatView display;
 	private ChatFrame baseFrame;
+	private CTECTwitter myTwitter;
 
 	public ChatController()
 	{
@@ -16,6 +18,7 @@ public class ChatController
 		String user = display.getAnswer("What is your name?");
 		simpleBot = new Chatbot(user);
 		baseFrame = new ChatFrame(this);
+		
 	}
 	
 	/*
