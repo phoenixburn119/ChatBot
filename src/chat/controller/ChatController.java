@@ -57,7 +57,8 @@ public class ChatController
 	
 	public String analyze(String userName)
 	{
-		//String userAnalysis = "The Twitter user " + 
+		String userAnalysis = "The Twitter user ";
+		return userAnalysis;
 	}
 	
 	public String fromUserToChatbot(String conversation)
