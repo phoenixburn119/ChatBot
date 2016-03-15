@@ -18,7 +18,7 @@ public class ChatSocialPanel extends JPanel
 	private ChatController baseController;
 	private SpringLayout baseLayout;
 	private JLabel titleBar;
-	private JButton faceBookButton;
+	private JButton analyzeTwitterButton;
 	private JButton twitterButton;
 	
 	public ChatSocialPanel(ChatController baseController)
@@ -26,7 +26,7 @@ public class ChatSocialPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		titleBar = new JLabel("ChatBot's Social Pages");
-		faceBookButton = new JButton("Facebook");
+		analyzeTwitterButton = new JButton("Check Twitter");
 		twitterButton = new JButton("Twitter");
 		
 		setupPanel();
@@ -38,7 +38,7 @@ public class ChatSocialPanel extends JPanel
 	{
 		this.setLayout(baseLayout);
 		this.add(titleBar);
-		this.add(faceBookButton);
+		this.add(analyzeTwitterButton);
 		this.add(twitterButton);
 	}
 	
@@ -54,6 +54,16 @@ public class ChatSocialPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				//Assign to do something
+				baseController.sendTweet("no text to send");
+			}
+		});
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = typingField.getText();
+				String results = baseController.analyze(user);
+				inputField.setText(results);
 			}
 		});
 	}

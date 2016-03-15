@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,6 +26,8 @@ public class ChatPanel extends JPanel
 	private JTextArea outputField;
 	private SpringLayout baseLayout;
 	private JLabel titleLabel;
+	private JButton analyzeTwitterButton;
+	private JButton twitterButton;
 	
 	public ChatPanel(ChatController baseController)
 	{
@@ -34,8 +37,9 @@ public class ChatPanel extends JPanel
 		submitButton = new JButton("Submit");
 		inputField = new JTextField();
 		outputField = new JTextArea();
+		analyzeTwitterButton = new JButton("Check Twitter");
+		twitterButton = new JButton("Twitter");
 		titleLabel = new JLabel("Hello i' Chatbot! Talk to me.");
-		baseLayout.putConstraint(SpringLayout.SOUTH, titleLabel, -339, SpringLayout.NORTH, inputField);
 
 		setupChatPane();
 		setupPanel();
@@ -50,12 +54,15 @@ public class ChatPanel extends JPanel
 		outputField.setEnabled(false);
 		outputField.setEditable(false);
 		textPane = new JScrollPane(outputField);
-		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 25, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 35, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, textPane, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, textPane, -30, SpringLayout.SOUTH, inputField);
 		baseLayout.putConstraint(SpringLayout.EAST, textPane, -10, SpringLayout.EAST, this);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		baseLayout.putConstraint(SpringLayout.SOUTH, titleLabel, -339, SpringLayout.NORTH, inputField);
+		baseLayout.putConstraint(SpringLayout.EAST, twitterButton, -131, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, analyzeTwitterButton, -10, SpringLayout.EAST, this);
 	}
 	
 	/*
@@ -64,6 +71,8 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
+		this.add(analyzeTwitterButton);
+		this.add(twitterButton);
 		this.add(submitButton);
 		this.add(inputField);
 		//this.add(outputField); //No longer adding outputField since textPane is the outputfield now.
@@ -126,6 +135,23 @@ public class ChatPanel extends JPanel
 			public void keyReleased(KeyEvent released)
 			{
 				
+			}
+		});
+		twitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//Assign to do something
+				baseController.sendTweet("no text to send");
+			}
+		});
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = inputField.getText();
+				String results = baseController.analyze(user);
+				inputField.setText(results);
 			}
 		});
 	}

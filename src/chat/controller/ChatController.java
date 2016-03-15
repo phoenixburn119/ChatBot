@@ -50,6 +50,16 @@ public class ChatController
 		System.exit(0);
 	}
 	
+	public void tweetText(String tweetText)
+	{
+		myTwitter.sendTweet(tweetText);
+	}
+	
+	public String analyze(String userName)
+	{
+		//String userAnalysis = "The Twitter user " + 
+	}
+	
 	public String fromUserToChatbot(String conversation)
 	{
 		String botResponse = "";
