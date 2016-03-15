@@ -1,7 +1,11 @@
 package chat.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import twitter4j.*;
 import chat.controller.ChatController;
 
@@ -57,7 +61,21 @@ public class CTECTwitter
 	
 	public List removeCommonEnglishWords(List<String> wordList)
 	{
-		return null;
+		String[] boringWords = importWordsToArray();
+		
+		for(int count = 0; count < wordList.size(); count++)
+		{
+			for(int removeSpot = 0; removeSpot <boringWords.length; removeSpot++)
+			{
+				if(wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					wordList.remove(count);
+					count--;
+					removeSpot = boringWords.length; //Exit the inner loop.
+				}
+			}
+		}
+		return wordList;
 	}
 	private void removeEmptyText()
 	{
@@ -66,7 +84,7 @@ public class CTECTwitter
 			if(wordsList.get(spot).equals(""))
 			{
 				wordsList.remove(spot);
-				spot--;
+				spot--; //Very important line of code to ensure not to skip a spot in the list.
 			}
 		}
 	}
@@ -84,4 +102,46 @@ public class CTECTwitter
 		}
 		return scrubbedString;
 	}
+	
+	private void removeTwitterUserNamesFromList(List<String> wordList)
+	{
+		for(int wordCount = 0; wordCount < wordList.size(); wordCount++)
+		{
+			if(wordList.get(wordCount).length() >= 1 && wordList.get(wordCount).charAt(0) == '@')
+			{
+				wordList.remove(wordCount);
+				wordCount--;
+			}
+		}
+	}
+	
+	private String[] importWordsToArray()
+	{
+		String[] boringWords;
+		int wordCount = 0;
+		try
+		{
+			Scanner wordFile = new Scanner(new File("commonWords (1).txt"));
+			while(wordFile.hasNext())
+			{
+				wordCount++;
+				wordFile.next();
+			}
+			wordFile.reset();
+			boringWords = new String[wordCount];
+			int boringWordCount = 0;
+			while(wordFile.hasNext())
+			{
+				boringWords[boringWordCount] = wordFile.next();
+				boringWordCount++;
+			}
+			wordFile.close();
+		}
+		catch(FileNotFoundException error)
+		{
+			baseController.handleErrors(error.getMessage());
+			return new String[0];
+		}
+			return boringWords;
+	}	
 }
