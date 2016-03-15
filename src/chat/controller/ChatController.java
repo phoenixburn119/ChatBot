@@ -1,6 +1,7 @@
 package chat.controller;
 
 import chat.model.Chatbot;
+import chat.model.CTECTwitter;
 import chat.view.ChatView;
 import chat.view.ChatFrame;
 
@@ -9,13 +10,16 @@ public class ChatController
 	private Chatbot simpleBot;
 	private ChatView display;
 	private ChatFrame baseFrame;
+	private CTECTwitter myTwitter;
 
 	public ChatController()
 	{
+		myTwitter = new CTECTwitter(this);
 		display = new ChatView();
 		String user = display.getAnswer("What is your name?");
 		simpleBot = new Chatbot(user);
 		baseFrame = new ChatFrame(this);
+		
 	}
 	
 	/*
@@ -46,6 +50,17 @@ public class ChatController
 		System.exit(0);
 	}
 	
+	public void tweetText(String tweetText)
+	{
+		myTwitter.sendTweet(tweetText);
+	}
+	
+	public String analyze(String userName)
+	{
+		String userAnalysis = "The Twitter user ";
+		return userAnalysis;
+	}
+	
 	public String fromUserToChatbot(String conversation)
 	{
 		String botResponse = "";
@@ -73,5 +88,15 @@ public class ChatController
 	public ChatFrame getBaseFrame()
 	{
 		return baseFrame;
+	}
+	
+	public void sendTweet(String tweet)
+	{
+		myTwitter.sendTweet(tweet);
+	}
+	
+	public void handleErrors(String error)
+	{
+		display.displayResponse(error);
 	}
 }
