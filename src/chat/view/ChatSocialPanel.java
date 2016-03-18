@@ -61,9 +61,9 @@ public class ChatSocialPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String user = typingField.getText();
-				String results = baseController.analyze(user);
-				inputField.setText(results);
+				//String user = typingField.getText();
+				//String results = baseController.analyze(user);
+				//inputField.setText(results);
 			}
 		});
 	}
