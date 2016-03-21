@@ -111,8 +111,8 @@ public class ChatController
 		display.displayResponse(error);
 	}
 	
-	public void sampleInvest()
+	public String sampleInvest()
 	{
-		myTwitter.sampleInvestigation();
+		return myTwitter.sampleInvestigation();
 	}
 }
