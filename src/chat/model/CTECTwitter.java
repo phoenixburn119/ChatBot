@@ -175,19 +175,20 @@ public class CTECTwitter
 	
 	public String sampleInvestigation()
 	{
-		String results = "";
+		String results = "Questions about pasta";
 		
 		Query query = new Query("pasta");
 		query.setCount(100);
-		query.setGeoCode(new GeoLocation(40.587521, -111.86178), 5, Query.MILES);
+		query.setGeoCode(new GeoLocation(40.587521, -111.86178), 25, Query.MILES);
 		query.setSince("2016-1-1");
 		try
 		{
 			QueryResult result = chatbotTwitter.search(query);
-			results.concat("Count : " + result.getTweets().size());
+			int tes = result.getTweets().size();
+			results += "Count : " + tes;
 			for(Status tweet : result.getTweets())
 			{
-				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+				results += "@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n";
 			}
 		}
 		catch(TwitterException error)
