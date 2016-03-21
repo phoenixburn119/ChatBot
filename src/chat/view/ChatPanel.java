@@ -30,6 +30,7 @@ public class ChatPanel extends JPanel
 	private JButton analyzeTwitterButton;
 	private JButton twitterButton;
 	private JButton clearOutput;
+	private JButton sampleInvest;
 	
 	public ChatPanel(ChatController baseController)
 	{
@@ -42,7 +43,10 @@ public class ChatPanel extends JPanel
 		analyzeTwitterButton = new JButton("Check Twitter");
 		twitterButton = new JButton("Twitter");
 		clearOutput = new JButton("Clear Conversation");
-		titleLabel = new JLabel("Hello i'm Chatbot! Talk to me.");
+		sampleInvest = new JButton("PastaTrack");
+		baseLayout.putConstraint(SpringLayout.EAST, sampleInvest, -363, SpringLayout.EAST, this);
+		titleLabel = new JLabel("Hello i'm Chatbot!");
+		baseLayout.putConstraint(SpringLayout.EAST, titleLabel, -450, SpringLayout.EAST, submitButton);
 		
 		setupChatPane();
 		setupPanel();
@@ -69,6 +73,7 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
+		this.add(sampleInvest);
 		this.add(clearOutput);
 		this.add(analyzeTwitterButton);
 		this.add(twitterButton);
@@ -109,7 +114,6 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, inputField, -6, SpringLayout.WEST, submitButton);
 		outputField.setBackground(Color.LIGHT_GRAY);
 		baseLayout.putConstraint(SpringLayout.NORTH, titleLabel, 6, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, titleLabel, -370, SpringLayout.EAST, submitButton);
 
 	}
 	
@@ -166,6 +170,13 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				outputField.setText("");
+			}
+		});
+		sampleInvest.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				baseController.sampleInvest();
 			}
 		});
 	}

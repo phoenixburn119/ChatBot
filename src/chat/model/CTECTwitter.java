@@ -1,11 +1,13 @@
 package chat.model;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import twitter4j.GeoLocation;
 import twitter4j.Paging;
+import twitter4j.Query;
+import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -169,6 +171,30 @@ public class CTECTwitter
 		}
 		tweetResults = " The top word in the tweets was " + wordsList.get(topWordLocation) + " and it was used " + topCount + " times.";
 		return tweetResults;
+	}
+	
+	public String sampleInvestigation()
+	{
+		String results = "";
+		
+		Query query = new Query("pasta");
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.587521, -111.86178), 5, Query.MILES);
+		query.setSince("2016-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results.concat("Count : " + result.getTweets().size());
+			for(Status tweet : result.getTweets())
+			{
+				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+			}
+		}
+		catch(TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		return results;
 	}
 	
 	

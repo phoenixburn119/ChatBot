@@ -110,4 +110,9 @@ public class ChatController
 	{
 		display.displayResponse(error);
 	}
+	
+	public void sampleInvest()
+	{
+		myTwitter.sampleInvestigation();
+	}
 }
