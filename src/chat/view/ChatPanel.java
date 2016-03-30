@@ -16,6 +16,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SpringLayout;
 
 import chat.controller.ChatController;
+import chat.controller.IOController;
+
 import javax.swing.JTree;
 
 public class ChatPanel extends JPanel
@@ -31,6 +33,8 @@ public class ChatPanel extends JPanel
 	private JButton twitterButton;
 	private JButton clearOutput;
 	private JButton sampleInvest;
+	private JButton save;
+	private JButton load;
 	
 	public ChatPanel(ChatController baseController)
 	{
@@ -38,13 +42,22 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		submitButton = new JButton("Submit");
+		save = new JButton("Save");
+		baseLayout.putConstraint(SpringLayout.EAST, save, -1, SpringLayout.EAST, this);
+		load = new JButton("Load");
+		baseLayout.putConstraint(SpringLayout.NORTH, load, 6, SpringLayout.SOUTH, save);
+		baseLayout.putConstraint(SpringLayout.EAST, load, -1, SpringLayout.EAST, this);
 		inputField = new JTextField();
 		outputField = new JTextArea();
 		analyzeTwitterButton = new JButton("Check Twitter");
 		twitterButton = new JButton("Twitter");
 		clearOutput = new JButton("Clear Conversation");
 		sampleInvest = new JButton("PastaTrack");
-		baseLayout.putConstraint(SpringLayout.EAST, sampleInvest, -363, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, load, 0, SpringLayout.WEST, sampleInvest);
+		baseLayout.putConstraint(SpringLayout.NORTH, save, 6, SpringLayout.SOUTH, sampleInvest);
+		baseLayout.putConstraint(SpringLayout.WEST, sampleInvest, 0, SpringLayout.WEST, save);
+		baseLayout.putConstraint(SpringLayout.NORTH, sampleInvest, 33, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, sampleInvest, -1, SpringLayout.EAST, this);
 		titleLabel = new JLabel("Hello i'm Chatbot!");
 		baseLayout.putConstraint(SpringLayout.EAST, titleLabel, -450, SpringLayout.EAST, submitButton);
 		
@@ -61,6 +74,8 @@ public class ChatPanel extends JPanel
 		outputField.setEnabled(false);
 		outputField.setEditable(false);
 		textPane = new JScrollPane(outputField);
+		baseLayout.putConstraint(SpringLayout.WEST, save, 4, SpringLayout.EAST, textPane);
+		baseLayout.putConstraint(SpringLayout.EAST, textPane, -110, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, titleLabel, 0, SpringLayout.WEST, textPane);
 		baseLayout.putConstraint(SpringLayout.SOUTH, titleLabel, 5, SpringLayout.NORTH, textPane);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -74,6 +89,8 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(baseLayout);
 		this.add(sampleInvest);
+		this.add(save);
+		this.add(load);
 		this.add(clearOutput);
 		this.add(analyzeTwitterButton);
 		this.add(twitterButton);
@@ -97,7 +114,6 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, textPane, 35, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, textPane, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, textPane, -30, SpringLayout.SOUTH, inputField);
-		baseLayout.putConstraint(SpringLayout.EAST, textPane, -10, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.EAST, clearOutput, -209, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, outputField, 6, SpringLayout.SOUTH, titleLabel);
 		baseLayout.putConstraint(SpringLayout.WEST, outputField, 0, SpringLayout.WEST, inputField);
@@ -180,6 +196,22 @@ public class ChatPanel extends JPanel
 				outputField.setText(results);
 			}
 		});
+		save.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String file = IOController.saveFile(outputField.getText());
+				inputField.setText(file);
+			}
+		});
+		load.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String loadedText = IOController.readTextFromFile(inputField.getText());
+				outputField.setText(loadedText);
+			}
+		});
 	}
 	
 	private void submitted()
@@ -195,5 +227,4 @@ public class ChatPanel extends JPanel
 	{
 		return inputField;
 	}
-	
 }
