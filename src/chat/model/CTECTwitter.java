@@ -197,22 +197,4 @@ public class CTECTwitter
 		}
 		return results;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
